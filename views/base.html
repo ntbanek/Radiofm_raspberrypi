@@ -1,0 +1,133 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/panel_css"/>
+  <title>Panel zarządzania stacją radiową</title>
+</head>
+<body>
+  <div id="menu">
+    <p>&nbsp;</p>
+  
+    <nav class="slidemenu">
+  
+   
+        <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" onClick=goToRadio() />
+        <label for="slide-item-1"><p class="icon">♬</p><span>Radio</span></label>
+        
+        <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" checked/>
+        <label for="slide-item-2"><p class="icon">♪</p><span>Baza utworów</span></label>
+        
+
+        <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" onClick=goToAdd() />
+        <label for="slide-item-3"><p class="icon">♫</p><span>Dodaj utwór</span></label>
+        
+        
+        <div class="clear"></div>
+        
+        <!-- Bar -->
+        <div class="slider">
+          <div class="bar"></div>
+        </div>
+        
+      </nav> 
+  <div id="header">
+<h1 style="text-align: center;"><span"><strong>PANEL ZARZĄDZANIA STACJĄ RADIOWĄ</strong></span></h1></div>
+<p style="text-align: center;"><span id="datetime"></span></p>
+
+    
+<div id="selectParams">
+        <p style="text-align: center;">&nbsp;Szukaj w bazie:</p>
+        <table style="height: 8px; border-color: black; margin-left: auto; margin-right: auto; width: 610px;" border="black">
+            <tbody>
+                <tr>
+                    <td style="width: 120px; text-align: center;"><strong>tytuł</strong></td>
+                    <td style="width: 120px; text-align: center;"><strong>wykonawca</strong></td>
+                    <td style="width: 70px; text-align: center;"><strong>gatunek</strong></td>
+                    <td style="width: 70px; text-align: center;"><strong>język</strong></td>
+
+                </tr>
+                <tr>
+                       
+
+                        <form action="/show_songs" id="show" method="post" name="show" >
+                         <td style="width: 120px;">
+                            <input name="tit" type="text" id="title" />
+                        </td>
+                        <td style="width: 120px;">
+                            <input name="art" type="text" id="artist" />
+                        </td>
+                        <td style="width: 70px;">
+                            <select id="genre" name="genn">
+                              <option value=""></option>
+                                <option value="pop">pop</option>
+                                <option value="rock">rock</option>
+                                <option value="poetry">ballada</option>
+                                <option value="rap">rap</option>
+                                <option value="metal">metal</option>
+                                <option value="reggae">reggae</option>
+                            </select>
+                        </td>
+                        <td style="width: 70px;">
+                            <select id="language" name="ln" value="">
+                                    <option value=""></option>
+                                <option value="Y">polski</option>
+                                <option value="N">inny</option>
+                            </select>
+                        </td>
+                      
+                    </tr>
+            </tbody>
+        </table>
+        <p style="text-align: center;"><span id="search"><button type="submit" class="example_c" >Wyświetl utwory</button></span></p>
+        </form>
+    </div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+ 
+<div style="height:190px; width:650px; overflow:auto;  margin-left: auto; margin-right: auto;">
+
+<table id="table" style="height: 81px; border-color: black; margin-left: auto; margin-right: auto;" border="black" width="550"> </table>
+</div>
+</div>
+
+
+
+<script type="text/javascript" src="/livejs"></script>
+<script>
+         var dt = new Date();
+        document.getElementById("datetime").innerHTML = dt.toLocaleString();
+
+setInterval(function() {
+         var dt = new Date();
+        document.getElementById("datetime").innerHTML = dt.toLocaleString();
+        }, 1000);
+
+
+  function getElement(id) {
+  return document.getElementById(id);
+  }
+
+
+
+function goToAdd()
+{
+  window.location.replace("./add");   
+}
+
+
+function goToRadio()
+{
+  window.location.replace("./");   
+}
+
+
+</script>
+
+
+</body>
+</html>
+

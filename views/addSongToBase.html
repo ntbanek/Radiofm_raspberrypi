@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/panel_css" />
+    <title>Panel zarządzania stacją radiową</title>
+</head>
+
+<body>
+    <div id="menu">
+        <p>&nbsp;</p>
+
+        <nav class="slidemenu">
+
+            <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" onClick=goToRadio() />
+            <label for="slide-item-1">
+                <p class="icon">♬</p><span>Radio</span></label>
+
+            <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" onClick=goToBase() />
+            <label for="slide-item-2">
+                <p class="icon">♪</p><span>Baza utworów</span></label>
+
+            <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" checked/>
+            <label for="slide-item-3">
+                <p class="icon">♫</p><span>Dodaj utwór</span></label>
+
+            <div class="clear"></div>
+
+            <div class="slider">
+                <div class="bar"></div>
+            </div>
+
+        </nav>
+        <div id="header">
+            <h1 style="text-align: center;"><span><strong>PANEL ZARZĄDZANIA STACJĄ RADIOWĄ</strong></span></h1></div>
+        <p style="text-align: center;"><span id="datetime"></span></p>
+    
+    <div id="add">
+        <p style="text-align: center;">&nbsp;Dodaj utwór do bazy:</p>
+        <table style="height: 8px; border-color: black; margin-left: auto; margin-right: auto; width: 610px;" border="black">
+            <tbody>
+                <tr>
+                    <td style="width: 200px; text-align: center;"><strong>plik mp3</strong></td>
+                    <td style="width: 120px; text-align: center;"><strong>tytuł</strong></td>
+                    <td style="width: 100px; text-align: center;"><strong>wykonawca</strong></td>
+                    <td style="width: 60px; text-align: center;"><strong>gatunek</strong></td>
+                    <td style="width: 50px; text-align: center;"><strong>język</strong></td>
+                </tr>
+                <tr>
+                    <form action='/add_song' method='post' name='form1' enctype="multipart/form-data" >
+                        <td style="width: 200px; text-align: justify;">
+                            <input name="filepath" type="file" value="/home/pi/Music/" id="path"  accept=".mp3" />
+                        </td>
+                        <td style="width: 120px;">
+                            <input name="tit" type="text" id="title" />
+                        </td>
+                        <td style="width: 100px;">
+                            <input name="art" type="text" id="artist" />
+                        </td>
+                        <td style="width: 60px;">
+                            <select id="genre" name="genn">
+                                <option value="pop">pop</option>
+                                <option value="rock">rock</option>
+                                <option value="poetry">ballada</option>
+                                <option value="rap">rap</option>
+                                <option value="metal">metal</option>
+                                <option value="reggae">reggae</option>
+                            </select>
+                        </td>
+                        <td style="width: 50px;">
+                            <select id="language" name="ln">
+                                <option value="Y">polski</option>
+                                <option value="N">inny</option>
+                            </select>
+                        </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align: center;"><span id="add_song"><button type="submit">Dodaj utwór</button></span></p>
+        </form>
+    </div>
+    </div>
+</div>
+
+    <script type="text/javascript" src="/livejs"></script>
+    <script>
+                var dt = new Date();
+        document.getElementById("datetime").innerHTML = dt.toLocaleString();
+       
+        setInterval(function() {
+         var dt = new Date();
+        document.getElementById("datetime").innerHTML = dt.toLocaleString();
+        }, 1000);
+
+
+        function getElement(id) {
+            return document.getElementById(id);
+        }
+
+
+        function goToRadio() {
+            window.location.replace("./");
+        }
+
+        function goToBase() {
+            window.location.replace("./base");
+        }
+    </script>
+
+</body>
+
+</html>
